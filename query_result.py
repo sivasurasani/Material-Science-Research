@@ -26,7 +26,7 @@ def parse_query(query_str):
                 try:
                     value = float(value) if '.' in value else int(value)
                 except ValueError:
-                    pass  # Keep value as a string if it can't be converted to a number
+                    pass
             query[key] = value
         queries.append(query)
     return queries
@@ -99,11 +99,9 @@ def create_click_annotation(ax, fig, pos, data):
         annot.set_text(formatted_text)
         annot.get_bbox_patch().set_alpha(0.9)
 
-        # Get the axes bounds in display coordinates
         ax_bounds = ax.get_window_extent().transformed(fig.dpi_scale_trans.inverted())
         ax_left, ax_bottom, ax_right, ax_top = ax_bounds.extents
 
-        # Determine annotation placement based on cursor position
         x_shift, y_shift = 20, 20
         if event.xdata < ax_left + 0.1 * (ax_right - ax_left):
             x_shift = -60
@@ -135,12 +133,10 @@ def draw_graph(results):
         if 'title' in entry:
             G.add_node(entry['title'])
     
-    # Connect all nodes in a sequential manner
     titles = [entry['title'] for entry in results if 'title' in entry]
     for i in range(len(titles) - 1):
         G.add_edge(titles[i], titles[i + 1])
     
-    # Use a circular layout
     pos = nx.circular_layout(G)
     fig, ax = plt.subplots()
     nx.draw(G, pos, with_labels=True, node_color='skyblue', node_size=1500, font_size=10, font_weight='bold', edge_color='gray', ax=ax)
