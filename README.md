@@ -1,7 +1,8 @@
 # Parameter Optimization and MSE Calculation
 
 This project performs parameter optimization using Mean Squared Error (MSE) as the evaluation metric. It reads data from an Excel file, calculates the MSE for various parameter values, and determines the best set of parameters that minimize the MSE. The code is designed to handle a vectorized calculation for faster performance compared to traditional for-loop-based methods.
-
+## Latest Code file name
+code_analysis_v_12.ipynb
 ## Features
 - **Efficient Vectorized MSE Calculation**: Uses NumPy to perform fast, element-wise operations on large datasets.
 - **Parameter Grid Search**: Explores a grid of parameters (b0, d1, d2, ei) to find the optimal values.
